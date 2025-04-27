@@ -13,8 +13,18 @@ SRCDIR=$(ROOT)/src
 INCDIR=$(ROOT)/include
 
 WARNFLAGS+=
-EXTRA_CFLAGS=
-EXTRA_CXXFLAGS=
+
+# --- vcpkg include path for Boost.Math ---
+VCPKG_INC:=$(ROOT)/vcpkg/installed/x64-windows/include
+
+# Add vcpkg to your C & C++ include search paths
+EXTRA_CFLAGS   += -I$(VCPKG_INC)
+EXTRA_CXXFLAGS += -I$(VCPKG_INC)
+# -----------------------------------------------------------------------
+
+# --- Disable NEON / Eigen vectorization (scalar-only paths) ---
+EXTRA_CXXFLAGS += -DEIGEN_DONT_VECTORIZE
+# -----------------------------------------------------------------------
 
 # Set to 1 to enable hot/cold linking
 USE_PACKAGE:=1

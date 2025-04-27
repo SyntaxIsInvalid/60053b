@@ -1,10 +1,10 @@
 #pragma once
 
 #include "api.h"
-#include "hardware/motor_group.hpp"
+#include "abclib/hardware/motor_group.hpp"
 #include "tracking_wheel.hpp"
-#include "estimation/odometry.hpp"
-#include "util.hpp"
+#include "abclib/estimation/odometry.hpp"
+#include "abclib/util.hpp"
 
 namespace abclib::hardware {
     struct ChassisConfig {

@@ -1,6 +1,6 @@
 #include "main.h"
 #include <Eigen/Dense>
-#include "abclib.hpp"
+#include "abclib/abclib.hpp"
 using namespace abclib;
 
 pros::Controller controller(pros::E_CONTROLLER_MASTER);

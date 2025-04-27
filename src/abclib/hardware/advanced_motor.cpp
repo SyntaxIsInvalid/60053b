@@ -234,9 +234,12 @@ void AdvancedMotor::rotate_to(double target_degrees, double timeout,
     brake();
 }
 
-void AdvancedMotor::rotate_to_task(double target_degrees, double timeout,
-                                   double min_voltage, double max_voltage) {
-    pros::Task([=]() { rotate_to(target_degrees, timeout, min_voltage, max_voltage); });
+void AdvancedMotor::rotate_to_task(double target_degrees,
+    double timeout,
+    double min_voltage,
+    double max_voltage) {pros::Task([ this, target_degrees, timeout, min_voltage, max_voltage ]() {
+        this->rotate_to(target_degrees, timeout, min_voltage, max_voltage);
+    });
 }
 
 void AdvancedMotor::rotate_to_velocity(double target_velocity, double timeout,
@@ -262,9 +265,10 @@ void AdvancedMotor::rotate_to_velocity(double target_velocity, double timeout,
     }
 }
 
-void AdvancedMotor::rotate_to_velocity_task(double target_velocity, double timeout,
-                                            double min_voltage, double max_voltage) {
-    pros::Task([=]() { rotate_to_velocity(target_velocity, timeout, min_voltage, max_voltage); });
+void AdvancedMotor::rotate_to_velocity_task(double target_velocity, double timeout, double min_voltage, double max_voltage) {
+    pros::Task([ this, target_velocity, timeout, min_voltage, max_voltage ]() {
+        this->rotate_to_velocity(target_velocity, timeout, min_voltage, max_voltage);
+    });
 }
 
 void AdvancedMotor::set_feedforward(bool enable) {
