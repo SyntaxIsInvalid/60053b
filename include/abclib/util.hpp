@@ -20,4 +20,8 @@ namespace util {
     inline double rad_to_deg(double radian) {
         return radian * 180/M_PI;
     }
+
+    inline static int sgn(double x) {
+        return (x > 0) - (x < 0);
+    }
 }
