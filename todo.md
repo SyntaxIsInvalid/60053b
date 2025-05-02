@@ -12,6 +12,11 @@
 - [ ] Make Ramsete
 - [ ] Finish chassis class 
 - [ ] Figure out motor dynamics 
+- [ ] Add exponetial trapezoidal motion profile and 2d mp
+- [ ] Figure out how to model wheel slip
+- [ ] maybe add qp between local discontinuities in acceleration
+- [ ] learn slew rate stuff
+- [ ] figure out how to do all the path planning cause itse unoptimal paths with splines currently
 
 ## Empirical Tasks (when robot is available)
 - [ ] k_s * sgn(v) + k_v * v + k_a * a regress to fit the constants 

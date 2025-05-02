@@ -19,6 +19,7 @@ public:
 
     double getLength() const { return segment_length_; }
     double getLengthError() const { return length_error_estimate_; }
+    double arcLength(double u) const;
 
 private:
     Vec3 start_pose_;

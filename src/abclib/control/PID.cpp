@@ -1,4 +1,4 @@
-#include "pid.hpp" 
+#include "abclib/control/pid.hpp" 
 
 namespace abclib::control {
     double PID::compute(double error, double dt) {

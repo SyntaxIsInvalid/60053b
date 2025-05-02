@@ -1,4 +1,4 @@
-#include "eta3_segment.hpp"
+#include "abclib/path/eta3_segment.hpp"
 #include <boost/math/quadrature/gauss_kronrod.hpp>
 #include <cmath>
 #include <iostream>
@@ -142,13 +142,13 @@ void Eta3PathSegment::computeLength()
         Vec7 p;
         for(int i = 0; i < 7; ++i) p[i] = (i+1) * std::pow(u, i);
         Vec2 v = D1 * p;
-        return std::max(v.norm(), 1e-9);
+        return std::max(v.norm(), 1e-6);
     };
 
     try {
         boost::math::quadrature::gauss_kronrod<double,15> integrator;
-        segment_length_ = integrator.integrate(s_dot_, 0.0, 1.0, 1e-9);
-        length_error_estimate_ = 1e-9;
+        segment_length_ = integrator.integrate(s_dot_, 0.0, 1.0, 1e-6);
+        length_error_estimate_ = 1e-6;
     } catch (const std::exception &e) {
         std::cerr << "Warning: Integration failed: " << e.what() << std::endl;
     }
@@ -174,4 +174,12 @@ Vec2 Eta3PathSegment::calcDeriv(double u, int order) const
         d2 << 2, 6*u, 12*u*u, 20*std::pow(u,3), 30*std::pow(u,4), 42*std::pow(u,5);
         return coeffs_.block<2,6>(0,2) * d2;
     }
+}
+
+double Eta3PathSegment::arcLength(double u) const {
+    using boost::math::quadrature::gauss_kronrod;
+    gauss_kronrod<double,15> integrator;
+    // clamp u
+    double ua = std::clamp(u, 0.0, 1.0);
+    return integrator.integrate(s_dot_, 0.0, ua, 1e-6);
 }

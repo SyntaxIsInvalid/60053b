@@ -15,12 +15,15 @@ public:
     explicit Eta3Path(std::vector<Eta3PathSegment>&& segments);
 
     double getTotalLength() const;
-    
+
     double getTotalLengthError() const;
-    
+
     Vec2 calcPathPoint(double u) const;
-    
+
     std::tuple<double, double, double> calcPathPose(double u) const;
+
+    int numSegments() const { return static_cast<int>(segs_.size()); }
+    const Eta3PathSegment& getSegment(int i) const { return segs_.at(i); }
 
 private:
     std::vector<Eta3PathSegment> segs_;

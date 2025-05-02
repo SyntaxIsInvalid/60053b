@@ -1,10 +1,10 @@
-#include "abclib/planning/eat3_path.hpp"
+#include "abclib/path/eta3_path.hpp"
 #include <cmath>
 #include <iostream>
 
 Eta3Path::Eta3Path(std::vector<Eta3PathSegment>&& segments)
         : segs_(std::move(segments)) {}
-        
+
 double Eta3Path::getTotalLength() const {
     double sum = 0.0;
     for (const auto& seg : segs_) {
