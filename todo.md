@@ -2,12 +2,11 @@
 
 ## Implementation Tasks
 - [ ] Make program style consistent 
-- [ ] Add topp-ra
-- [ ] Add pf, mixture model + gating + colored noise with 1st order mc for temporal correlation + band limit, ess, kld, stratified sampling
+- [ ] Add pf, mixture model + gating + colored noise with 1st order mc for temporal correlation + band limit, ess, kld -> stratified sampling -> roughening, auxillery unscented pf as well eventually
 - [ ] Differential evolution for PID tuning
 - [ ] Figure out motor feed forward
 - [ ] Make an abstract arm class
-- [ ] Figure out ray casting for MCL
+- [ ] Implement BVH-based analytic raycasting for sensor updates by extracting map contours, building a BVH over the segments, and performing ray–segment intersection tests for mcl + standard dda + grid  w
 - [ ] Figure out QP with HPIPM make MPC
 - [ ] Make Ramsete
 - [ ] Finish chassis class 

@@ -24,7 +24,7 @@ std::pair<double,double> ConstraintStage::admissibleX() const {
                 continue;
             }
         }
-        // beta x + gamma <= 0  implies  x <=  –gamma/beta  or  x >= –gamma/beta
+        // beta x + gamma <= 0  implies  x <=  –gamma/beta  or  x >= –gamma/bet
         const double bound = -c / b;
         if (b > 0) {
             x_max = std::min(x_max, bound);
